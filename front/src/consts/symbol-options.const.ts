@@ -27,7 +27,6 @@ export const symbolOptions: Option[] = [
    { label: "Lilly (Eli) and Company", value: "LLY" },
    { label: "Lockheed Martin Corporation", value: "LMT" },
    { label: "Mastercard Incorporated", value: "MA" },
-   { label: "Mastercard Incorporated", value: "MA" },
    { label: "Merck & Co., Inc.", value: "MRK" },
    { label: "Meta Platforms, Inc. (Facebook)", value: "META" },
    { label: "Microsoft Corporation", value: "MSFT" },

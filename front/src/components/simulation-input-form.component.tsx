@@ -62,7 +62,7 @@ function SimulationInputForm({ onFormSubmit }: Props) {
    return (
       <>
          <form id="simulation-form">
-            <div className="mb-4">
+            <div className="mb-6">
                <label
                   htmlFor="symbol"
                   className="block text-sm font-medium text-gray-700 dark:text-gray-300"
@@ -74,7 +74,7 @@ function SimulationInputForm({ onFormSubmit }: Props) {
                   onChange={(e) => setSymbol(e.target.value)}
                   id="symbol"
                   name="symbol"
-                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white dark:bg-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white dark:bg-zinc-900 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
                >
                   <option value="default" label="Select a symbol" disabled />
                   {symbolOptions.map((option: Option) => {
@@ -89,24 +89,24 @@ function SimulationInputForm({ onFormSubmit }: Props) {
                </select>
             </div>
 
-            <div className="mb-4">
-               <div className="flex justify-center items-center space-x-2">
+            <div className="mb-6">
+               <div className="flex justify-center items-center space-x-2 relative">
                   <label
                      htmlFor="strategy"
                      className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center"
                   >
                      Select Trading Strategy
-                     {strategy !== Strategy.None && (
-                        <div className="relative group ml-2">
-                           <span className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 cursor-pointer">
-                              ?
-                              <div className="absolute hidden group-hover:block w-72 p-2 bg-green-50 dark:bg-green-900 border-l-4 border-green-500 text-green-700 dark:text-green-300 rounded-md shadow-md text-sm left-full top-full mt-1 ml-2">
-                                 {strategyDescriptions[strategy]}
-                              </div>
-                           </span>
-                        </div>
-                     )}
                   </label>
+                  {strategy !== Strategy.None && (
+                     <div className="ml-2 group">
+                        <span className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 cursor-pointer">
+                           ?
+                        </span>
+                        <div className="absolute left-1/2 transform -translate-x-1/2 hidden group-hover:block w-64 p-2 bg-green-50 dark:bg-green-900 border-l-4 border-green-500 text-green-700 dark:text-green-300 rounded-md shadow-md text-sm top-full mt-1 z-50">
+                           {strategyDescriptions[strategy]}
+                        </div>
+                     </div>
+                  )}
                </div>
                <select
                   value={strategy}
@@ -120,7 +120,7 @@ function SimulationInputForm({ onFormSubmit }: Props) {
                   }}
                   id="strategy"
                   name="strategy"
-                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white dark:bg-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                  className="mt-1 w-full py-2 px-3 border border-gray-300 bg-white dark:bg-zinc-900 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
                >
                   {Object.values(Strategy).map((key) => {
                      return (
@@ -139,7 +139,7 @@ function SimulationInputForm({ onFormSubmit }: Props) {
                value={strategyConfig}
                onChange={(e) => setStrategyConfig(e)}
             ></StrategyConfigInput>
-            <div className="grid grid-cols-2 gap-4 mb-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                <div>
                   <label
                      htmlFor="start-date"
@@ -151,7 +151,7 @@ function SimulationInputForm({ onFormSubmit }: Props) {
                      type="datetime-local"
                      id="start-date"
                      name="start-date"
-                     className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white dark:bg-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                     className="w-full mt-1 py-2 px-3 border border-gray-300 bg-white dark:bg-zinc-900 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
                      value={startDate}
                      onChange={(e) => setStartDate(e.target.value)}
                   />
@@ -167,7 +167,7 @@ function SimulationInputForm({ onFormSubmit }: Props) {
                      type="datetime-local"
                      id="end-date"
                      name="end-date"
-                     className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white dark:bg-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                     className="w-full mt-1 py-2 px-3 border border-gray-300 bg-white dark:bg-zinc-900 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
                      value={endDate}
                      onChange={(e) => setEndDate(e.target.value)}
                   />

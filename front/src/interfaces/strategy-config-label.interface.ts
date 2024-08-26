@@ -1,9 +1,9 @@
-export interface StrategyConfigLabel {
+export interface IStrategyConfigLabel {
    label: string;
    suffix?: string;
    description: string;
 }
 
 export type StrategyConfigLabels<T> = {
-   [K in keyof T]: StrategyConfigLabel;
+   [K in keyof T]: IStrategyConfigLabel;
 };

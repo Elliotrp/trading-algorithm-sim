@@ -13,7 +13,7 @@ import { strategyConfigLabels } from "../consts/strategy-config-labels.const";
 import Select from "react-select";
 import { machineLearningFeatures } from "../consts/machine-learning-feature-options.const";
 import { IMultiselectOption } from "../interfaces/multiselect-option.interface";
-import { StrategyConfigLabel } from "../interfaces/strategy-config-label.interface";
+import { IStrategyConfigLabel } from "../interfaces/strategy-config-label.interface";
 
 function StrategyConfigInput({
    strategy,
@@ -33,32 +33,32 @@ function StrategyConfigInput({
 
    function renderSimpleStrategyConfigInput<T extends IStrategyConfig>(
       config: T,
-      labels: StrategyConfigLabel,
+      labels: IStrategyConfigLabel,
       field: keyof T & string,
       inputProps: React.InputHTMLAttributes<HTMLInputElement>,
       stringParseFn: (value: string) => any
    ) {
       inputProps.placeholder = labels.label;
       return (
-         <div className="mb-4">
-            <div className="flex justify-center items-center space-x-2">
+         <div className="mb-6">
+            <div className="flex justify-center items-center space-x-2 relative">
                <label
-                  htmlFor="strategy"
+                  htmlFor={field}
                   className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center"
                >
-                  {labels.label}{" "}
-                  {labels.suffix && <span>({labels.suffix})</span>}
-                  {strategy !== Strategy.None && (
-                     <div className="relative group ml-2">
-                        <span className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 cursor-pointer">
-                           ?
-                           <div className="absolute hidden group-hover:block w-72 p-2 bg-green-50 dark:bg-green-900 border-l-4 border-green-500 text-green-700 dark:text-green-300 rounded-md shadow-md text-sm left-full top-full mt-1 ml-2">
-                              {labels.description}
-                           </div>
-                        </span>
-                     </div>
+                  {labels.label}
+                  {labels.suffix && (
+                     <span className="ml-1">({labels.suffix})</span>
                   )}
                </label>
+               <div className="ml-2 group">
+                  <span className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 cursor-pointer">
+                     ?
+                  </span>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 hidden group-hover:block w-64 p-2 bg-green-50 dark:bg-green-900 border-l-4 border-green-500 text-green-700 dark:text-green-300 rounded-md shadow-md text-sm top-full mt-2 z-50">
+                     {labels.description}
+                  </div>
+               </div>
             </div>
 
             <input
@@ -68,7 +68,7 @@ function StrategyConfigInput({
                onChange={(e) =>
                   handleInputChange(field, stringParseFn(e.target.value))
                }
-               className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white dark:bg-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+               className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white dark:bg-zinc-900 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
                {...inputProps}
             />
          </div>
@@ -80,30 +80,30 @@ function StrategyConfigInput({
       K extends IMultiselectOption
    >(
       config: T,
-      labels: StrategyConfigLabel,
+      labels: IStrategyConfigLabel,
       field: keyof T & string,
       options: K[]
    ) {
       return (
-         <div className="mb-4">
-            <div className="flex justify-center items-center space-x-2">
+         <div className="mb-6">
+            <div className="flex justify-center items-center space-x-2 relative">
                <label
-                  htmlFor="strategy"
+                  htmlFor={field}
                   className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center"
                >
-                  {labels.label}{" "}
-                  {labels.suffix && <span>({labels.suffix})</span>}
-                  {strategy !== Strategy.None && (
-                     <div className="relative group ml-2">
-                        <span className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 cursor-pointer">
-                           ?
-                           <div className="absolute hidden group-hover:block w-72 p-2 bg-green-50 dark:bg-green-900 border-l-4 border-green-500 text-green-700 dark:text-green-300 rounded-md shadow-md text-sm left-full top-full mt-1 ml-2 z-50">
-                              {labels.description}
-                           </div>
-                        </span>
-                     </div>
+                  {labels.label}
+                  {labels.suffix && (
+                     <span className="ml-1">({labels.suffix})</span>
                   )}
                </label>
+               <div className="ml-2 group">
+                  <span className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 cursor-pointer">
+                     ?
+                  </span>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 hidden group-hover:block w-64 p-2 bg-green-50 dark:bg-green-900 border-l-4 border-green-500 text-green-700 dark:text-green-300 rounded-md shadow-md text-sm top-full mt-2 z-50">
+                     {labels.description}
+                  </div>
+               </div>
             </div>
             <Select
                options={options}
@@ -117,23 +117,23 @@ function StrategyConfigInput({
                }}
                classNames={{
                   control: () =>
-                     "bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none",
+                     "bg-white dark:bg-zinc-900 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none mt-1",
                   option: (state) =>
                      `cursor-pointer select-none relative py-2 pl-10 pr-4 ${
                         state.isSelected
                            ? "bg-green-500 dark:bg-green-600 text-white"
                            : state.isFocused
-                           ? "bg-gray-100 dark:bg-gray-600 text-gray-900 dark:text-gray-100"
-                           : "bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                           ? "bg-zinc-100 dark:bg-zinc-600 text-gray-900 dark:text-gray-100"
+                           : "bg-white dark:bg-zinc-900 text-gray-900 dark:text-gray-100"
                      }`,
                   multiValue: () =>
-                     "flex items-center bg-gray-200 dark:bg-gray-600 rounded-md p-px",
+                     "flex items-center bg-zinc-200 dark:bg-zinc-600 rounded-md p-px",
                   multiValueLabel: () =>
                      "text-gray-700 dark:text-gray-200 px-2",
                   multiValueRemove: () =>
                      "flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-red-100 dark:hover:bg-red-200 hover:text-white rounded-md cursor-pointer p-1",
                   menu: () =>
-                     "bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-lg mt-1",
+                     "bg-white dark:bg-zinc-900 border border-gray-300 dark:border-gray-600 rounded-md shadow-lg mt-1",
                   menuList: () => "py-1",
                   input: () => "text-white",
                }}

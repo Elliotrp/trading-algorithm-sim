@@ -30,10 +30,7 @@ function Simulation() {
 
    return (
       <>
-         <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 p-8 shadow-md rounded-lg">
-            <h1 className="text-3xl font-bold mb-6 text-center dark:text-white">
-               Stock Trader 1000
-            </h1>
+         <div className="max-w-4xl mx-auto bg-white dark:bg-zinc-900 p-8 shadow-md rounded-lg">
             <SimulationInputForm
                onFormSubmit={handleFormSubmit}
             ></SimulationInputForm>

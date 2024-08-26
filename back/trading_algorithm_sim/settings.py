@@ -23,13 +23,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-h3$h)lm4ddrlf&781v3v4hdlyf@ysll*z0a$g83ozixkudzdp5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['algosimtrader.uk']
 
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:5173'
-]
+# CORS_ORIGIN_WHITELIST = [
+#     'http://localhost:5173'
+# ]
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
 # Application definition
 

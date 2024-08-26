@@ -1,9 +1,7 @@
-import {
-   StrategyConfigLabel,
-   strategyConfigLabels,
-} from "../consts/strategy-config-labels.const";
+import { strategyConfigLabels } from "../consts/strategy-config-labels.const";
 import { strategyLabels } from "../consts/strategy-labels.const";
 import { ISimulationResults } from "../interfaces/simulation-results.interface";
+import { IStrategyConfigLabel } from "../interfaces/strategy-config-label.interface";
 import { IStrategyConfig } from "../interfaces/strategy-config.interface";
 import SimulationStats from "./simulation-stats.component";
 import StockChart from "./stock-chart.component";
@@ -41,10 +39,10 @@ function SimulationResults({ simulationResults }: Props) {
                   <div className="mb-2">
                      {Object.keys(simulationResults.strategy_config || {}).map(
                         (key: string) => {
-                           const labels: StrategyConfigLabel | undefined =
+                           const labels: IStrategyConfigLabel | undefined =
                               strategyConfigLabels?.[
                                  key as keyof IStrategyConfig
-                              ] as StrategyConfigLabel | undefined;
+                              ] as IStrategyConfigLabel | undefined;
 
                            if (!labels) {
                               return null;
